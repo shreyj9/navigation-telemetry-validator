@@ -105,10 +105,3 @@ sudo systemctl status navigation-validator
 journalctl -u navigation-validator -f
 ```
 
-## Resume rule
-
-Only claim numbers after you personally run the benchmark.
-
-Safe qualitative bullet after completing the project:
-
-> Built a Python/Linux navigation telemetry validation platform that ingests synthetic route events, computes route-quality metrics, flags malformed telemetry, persists data in PostgreSQL, and exposes health/metrics APIs.
