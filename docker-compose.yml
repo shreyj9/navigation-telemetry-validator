@@ -1,0 +1,29 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: navigation
+      POSTGRES_USER: navigation
+      POSTGRES_PASSWORD: navigation
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U navigation -d navigation"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  api:
+    build: .
+    container_name: navigation-api
+    environment:
+      DATABASE_URL: postgresql+psycopg://navigation:navigation@db:5432/navigation
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
