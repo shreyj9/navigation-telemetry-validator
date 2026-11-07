@@ -13,3 +13,10 @@ class TelemetryIn(BaseModel):
 class IngestResult(BaseModel):
     accepted: int
     rejected: int
+
+class IncidentAnalysisRequest(BaseModel):
+    log_text: str = Field(min_length=1, max_length=5000)
+
+
+class IncidentAnalysisResponse(BaseModel):
+    analysis: str

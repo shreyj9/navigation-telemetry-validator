@@ -16,6 +16,8 @@ services:
   api:
     build: .
     container_name: navigation-api
+    env_file:
+      - .env
     environment:
       DATABASE_URL: postgresql+psycopg://navigation:navigation@db:5432/navigation
     depends_on:
